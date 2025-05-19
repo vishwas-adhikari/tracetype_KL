@@ -1,0 +1,85 @@
+{% load static %} <!-- Add this at the top to load static files -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TraceType Dashboard</title>
+  <!-- Link to your static CSS file -->
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <!-- Login Page - We'll bypass this with JS for now, assuming Django auth -->
+  <div id="login-page" class="page hidden"> <!-- Initially hidden -->
+    <div class="login-container">
+      <h1>TraceType</h1>
+      <form id="login-form">
+        <input type="text" id="username-login" placeholder="Username" required>
+        <input type="password" id="password-login" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <p class="login-hint">Hint: Login via Django Admin for now.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard Page - This will be the main view -->
+  <div id="dashboard-page" class="page"> <!-- Initially shown if authenticated -->
+    <nav>
+      <h1>TRACETYPE</h1>
+      <!-- Logout button - will point to Django admin logout -->
+      <a href="/admin/logout/" id="logout-btn-link"><button id="logout-btn">Logout</button></a>
+    </nav>
+
+    <main>
+      <h2>Monitored Devices</h2>
+      <button id="refresh-devices-btn" style="margin-bottom: 1rem;">Refresh List</button>
+      <div class="users-grid" id="devices-grid">
+        <!-- Device cards will be injected here by JavaScript -->
+      </div>
+      <!-- Floating add button removed for now, as devices auto-register -->
+      <!-- <button id="add-user-btn" class="floating-btn">+</button> -->
+    </main>
+
+    <!-- Rename Device Modal -->
+    <div id="rename-device-modal" class="page hidden"> <!-- Changed from add-user-modal -->
+      <div class="modal-content">
+        <h2>Rename Device</h2>
+        <form id="rename-device-form">
+          <input type="hidden" id="rename-device-id">
+          <input type="text" id="new-device-display-name" placeholder="New Display Name" required>
+          <div class="modal-buttons">
+            <button type="button" id="cancel-rename-device">Cancel</button>
+            <button type="submit">Save Name</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="page hidden"> <!-- Kept class 'modal' -->
+      <div class="modal-content">
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want to delete this device and all its logs?</p>
+        <div class="modal-buttons">
+          <button type="button" id="cancel-delete">Cancel</button>
+          <button type="button" id="confirm-delete" class="delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logs Page -->
+  <div id="logs-page" class="page hidden">
+    <nav>
+      <button id="back-to-dashboard-btn">← Back to Dashboard</button>
+      <h1 id="logs-page-device-name">Device Logs</h1>
+    </nav>
+    <div class="terminal" id="logs-terminal">
+      <!-- Logs will be injected here -->
+    </div>
+  </div>
+
+  <!-- Include your static JS file -->
+  <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

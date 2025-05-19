@@ -1,0 +1,18 @@
+# requirements.txt
+
+# Django Framework
+Django>=4.2,<5.0
+
+# For keylogger2.py client & encryption
+pynput>=1.7.0
+requests>=2.25.0
+cryptography>=3.4.0
+
+# For keylogger2.py client (Windows active window detection - optional)
+pygetwindow>=0.0.9
+
+# For serving the Django application in production
+gunicorn>=20.0.0
+
+
+#once ensure that you have sufficient modules required for keylogger2.py file as well
