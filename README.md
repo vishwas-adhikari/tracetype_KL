@@ -76,7 +76,7 @@ TRACETYPE is an educational project designed to demonstrate the concepts behind 
 
     <img src="dashboard2.jpg" alt=" Main dashboard view " width="500"/>
 
-    <img src="logsboard.jpg" alt="Logs view " width="500"/>
+    <img src="logboard.jpg" alt="Logs view " width="500"/>
    
 
 *   *Django Admin - Monitored Devices:*
@@ -85,16 +85,42 @@ TRACETYPE is an educational project designed to demonstrate the concepts behind 
 
 
 
-## Local Setup and Installation
-
-Follow these steps to set up and run the TRACETYPE project locally for development and testing.
+## Local Setup and Installation (Brief)
 
 **Prerequisites:**
-*   Python 3.8+ (Python 3.12.x was used during development)
+*   Python 3.8+
 *   `pip` (Python package installer)
 *   Git
 
-**1. Clone the Repository:**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
-   cd YOUR_REPOSITORY_NAME
+**1. Clone & Setup Environment:**
+   
+     *git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+     *cd YOUR_REPOSITORY_NAME
+  
+     *pip install -r requirements.txt
+**2. Configure Secrets:**
+
+   *   **Generate a Fernet Key:**
+
+   *   **Generate a Django Secret Key:**
+        Create a long, random, unique string for your Django `SECRET_KEY`. You can use an online generator or create one with Python 
+
+   *   **Set Keys (Modify Files Directly for Local Testing):**
+      1.  Open `tracetype/tracetype/settings.py` and modify the placeholder with your key 
+          *   Replace the placeholder for `SECRET_KEY` with your generated Django secret key (as a string).
+             *Example:* `SECRET_KEY = "your_long_random_django_secret_key_here"`        
+             *Example:* `FERNET_KEY = b"your_generated_fernet_key_bytes_from_above"`
+   2.  Open `keylogger2.py`:
+          *   Replace the placeholder for `KEY` with the **same** Fernet key (as bytes) that you used in `settings.py`.
+
+**3. Initialize Database & Admin User:**
+   
+    * python manage.py migrate
+    * python manage.py createsuperuser
+
+**4. Run the system**
+     Open two terminals in project directory and run 
+     *python3 manage.py runserver 
+     *python3 keylogger2 
+
+Your keylogger activates and logs are captured in dashboard ! 
