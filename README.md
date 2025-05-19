@@ -94,10 +94,10 @@ TRACETYPE is an educational project designed to demonstrate the concepts behind 
 
 **1. Clone & Setup Environment:**
    
-     *git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
-     *cd YOUR_REPOSITORY_NAME
+      git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+      cd YOUR_REPOSITORY_NAME
   
-     *pip install -r requirements.txt
+      pip install -r requirements.txt
 **2. Configure Secrets:**
 
    *   **Generate a Fernet Key:**
@@ -108,19 +108,19 @@ TRACETYPE is an educational project designed to demonstrate the concepts behind 
    *   **Set Keys (Modify Files Directly for Local Testing):**
       1.  Open `tracetype/tracetype/settings.py` and modify the placeholder with your key 
           *   Replace the placeholder for `SECRET_KEY` with your generated Django secret key (as a string).
-             *Example:* `SECRET_KEY = "your_long_random_django_secret_key_here"`        
-             *Example:* `FERNET_KEY = b"your_generated_fernet_key_bytes_from_above"`
+             *Example:*   `SECRET_KEY = "your_long_random_django_secret_key_here"`        
+             *Example:*   `FERNET_KEY = b"your_generated_fernet_key_bytes_from_above"`
    2.  Open `keylogger2.py`:
           *   Replace the placeholder for `KEY` with the **same** Fernet key (as bytes) that you used in `settings.py`.
 
 **3. Initialize Database & Admin User:**
    
-    * python manage.py migrate
-    * python manage.py createsuperuser
+      python manage.py migrate
+      python manage.py createsuperuser
 
 **4. Run the system**
-     Open two terminals in project directory and run 
-     *python3 manage.py runserver 
-     *python3 keylogger2 
+     
+          python3 manage.py runserver 
+          python3 keylogger2 
 
 Your keylogger activates and logs are captured in dashboard ! 
